@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="app">
+
+<head>
+    <title>Contact Form AngularJS</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ladda-themeless.min.css">
+    <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Contact Form with AngularJS validations
+			</a >
+		</div >
+		,
+	</div >
+</nav >
+
+<div class="container main-content" ng-controller="FormController">
+
+<div class="row">
+    <div class="col-md-6">
+       <form class="form-group" ng-submit="onSubmit()" novalidate="novalidate">
+          <div class="form-group">
+            <label for="firstName" class="control-label">Firstname</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="enter firstname" ng-model="formModel.firstName" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/" ng-minlength="6" ng-pattern-err-type="badFirstName" required="required">
+        </div>
+           <div class="form-group">
+            <label for="emailAddress">Email Address</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="enter email" ng-model="formModel.email" required="required">
+        </div>
+        <div class="form-group">
+            <label for="subject" class="control-label">Subject</label>
+            <select name="subject" id="subject" class="form-control" ng-model="formModel.subject" required="required">
+               <option value="">-- please select --</option>
+                <option value="amazing">Amazing</option>
+                <option value="wow">Wow</option>
+                <option value="suggestion" >Suggestion</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message" class="control-label">Message</label>
+            <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="enter message" ng-model="formModel.message" required="required"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ladda="submitting" data-style="expand-right" type="submit" >
+           <span ng-show="submitting">Submitting</span> 
+           <span ng-show="!submitting">Submit</span>
+            </button>
+        </div>
+       </form>
+        <!-- for debugging purposes       -->
+       <pre>{{formModel | json }}</pre>
+    </div>
+    
+</div>
+</div >
+<!--download or use cdn to add these dependencies excluding main -->
+<script src="angular.min.js"></script>
+<script src="jcs-auto-validate.min.js"></script>
+<script src="spin.min.js"></script>
+<script src="ladda.min.js"></script>
+<script src="angular-ladda.min.js"></script>
+<script src="main.js" ></script>
+</body >
+</html >
